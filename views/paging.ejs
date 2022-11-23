@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Collection</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+</head>
+<body>
+
+    
+  <h2>Records</h2>
+  <h4>Displaying Students of <%= skipValue+1 %> - <%= skipValue+limitValue %> of <%= count %>  </h4>
+    
+
+    <table class="table table-bordered">
+    <thead style="font-weight: lighter;">     
+    
+      <tr style="font-size: 15px;font-weight: lighter;">
+        <th>User Name</th>
+        <th >Full Name</th>
+        <th>Class</td>
+        <th>Section</td>
+        <th>Action</td>
+      </tr>
+    </thead>    
+    <tbody> 
+         
+          
+        <% if (pages > 0) { %>
+      <% student.forEach(function(details) { %>
+        <tr>       
+       
+        <td scope="row"><%= details.username  %></td>
+        
+        <td><%= details.name %></td>
+        <td><%= details.stclass %></td>
+        <td><%= details.section %></td>
+       <td style="font-weight: lighter;font-size: small;"><a href="/edit/<%= details._id %>">Edit</a> | <a href="/delete/<%= details._id %>">Delete</a></td>
+      </tr> 
+   
+    <%})%>
+      <%}%>
+
+    
+    </div>  
+
+    </tbody>
+ <%for(let i=0;i<pages;i++){%>
+   <a href="/show-students?limit=5&skip=<%=i*5%>&stclass=<%=stclass%>&section=<%=section%> "><%= i %> </a>
+
+ <%}%>
+
+ 
+  
+    
+</body>
+</html>
+
+    
